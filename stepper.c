@@ -31,6 +31,7 @@
 #include <avr/interrupt.h>
 #include "planner.h"
 #include "wiring_serial.h"
+#include <avr/pgmspace.h>
 
 
 // Some useful constants
@@ -187,6 +188,7 @@ SIGNAL(TIMER1_COMPA_vect)
       plan_discard_current_block();
     }
   } else {
+    printPgmString(PSTR("Done\n\r"));
     out_bits = 0;
   }          
   out_bits ^= settings.invert_mask;
